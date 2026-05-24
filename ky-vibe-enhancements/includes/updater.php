@@ -24,7 +24,7 @@ function ky_vibe_enhancements_filter_github_update_data( $update_data, $plugin_d
 		return $update_data;
 	}
 
-	$latest_release = ky_vibe_enhancements_get_latest_release();
+	$latest_release = ky_vibe_enhancements_get_latest_release( false );
 
 	if ( empty( $latest_release['version'] ) || empty( $latest_release['download_url'] ) ) {
 		return false;
@@ -49,12 +49,26 @@ function ky_vibe_enhancements_filter_github_update_data( $update_data, $plugin_d
 add_filter( 'update_plugins_github.com', 'ky_vibe_enhancements_filter_github_update_data', 10, 3 );
 
 /**
+ * Clear cached release data when WordPress explicitly checks for plugin updates.
+ *
+ * @param object $transient Plugin update transient.
+ * @return object
+ */
+function ky_vibe_enhancements_clear_release_cache_on_update_check( $transient ) {
+	delete_transient( 'ky_vibe_enhancements_latest_release' );
+
+	return $transient;
+}
+add_filter( 'pre_set_site_transient_update_plugins', 'ky_vibe_enhancements_clear_release_cache_on_update_check' );
+
+/**
  * Fetch latest GitHub release metadata for this plugin.
  *
+ * @param bool $allow_cached_release Whether cached release metadata can be used.
  * @return array{version:string,download_url:string}
  */
-function ky_vibe_enhancements_get_latest_release() {
-	$cached_release = get_transient( 'ky_vibe_enhancements_latest_release' );
+function ky_vibe_enhancements_get_latest_release( $allow_cached_release = true ) {
+	$cached_release = $allow_cached_release ? get_transient( 'ky_vibe_enhancements_latest_release' ) : false;
 
 	if ( is_array( $cached_release ) ) {
 		return $cached_release;
@@ -93,7 +107,7 @@ function ky_vibe_enhancements_get_latest_release() {
 		'download_url' => ky_vibe_enhancements_find_release_asset_url( $release_data['assets'] ?? array() ),
 	);
 
-	set_transient( 'ky_vibe_enhancements_latest_release', $latest_release, 6 * HOUR_IN_SECONDS );
+	set_transient( 'ky_vibe_enhancements_latest_release', $latest_release, 10 * MINUTE_IN_SECONDS );
 
 	return $latest_release;
 }
@@ -133,4 +147,3 @@ function ky_vibe_enhancements_find_release_asset_url( $release_assets ) {
 
 	return '';
 }
-
