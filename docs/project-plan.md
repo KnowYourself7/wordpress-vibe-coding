@@ -34,14 +34,10 @@ Checklist:
 - Create or confirm a Hostinger WordPress staging site.
 - Confirm the production site is currently using WoodMart Child.
 - Keep this GitHub repository connected to the local workspace.
-- Push the plugin project to GitHub.
-- In Hostinger hPanel, open `Websites -> Dashboard -> Advanced -> Git`.
-- Connect GitHub through OAuth.
-- Select the repository and branch.
-- Use Hostinger's fixed root directory: `public_html`.
-- Keep plugin files nested in this repository under `wp-content/plugins/ky-vibe-enhancements`.
-- Deploy to staging.
-- In WordPress Admin, activate `KY Vibe Enhancements`.
+- Build `dist/ky-vibe-enhancements.zip`.
+- In staging WordPress Admin, open `Plugins -> Add New -> Upload Plugin`.
+- Upload `dist/ky-vibe-enhancements.zip`.
+- Activate `KY Vibe Enhancements`.
 - Confirm WoodMart Child remains the active theme.
 - Visit the staging homepage and confirm the site still looks unchanged except for plugin-provided additions.
 
@@ -72,10 +68,16 @@ After staging works, expand the plugin:
 
 ## Deployment Target
 
-Safe plugin target:
+Safe plugin source directory:
 
 ```text
-public_html/wp-content/plugins/ky-vibe-enhancements
+ky-vibe-enhancements
+```
+
+Safe deployable artifact:
+
+```text
+dist/ky-vibe-enhancements.zip
 ```
 
 Do not deploy this repository to `public_html` with Hostinger Git deployment.
