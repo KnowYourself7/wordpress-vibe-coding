@@ -1,0 +1,33 @@
+/*
+Theme Name: Vibe Aesthetic Theme
+Theme URI: https://example.com/vibe-aesthetic-theme
+Author: Kai and Codex
+Author URI: https://example.com
+Description: A clean Gutenberg block theme scaffold for Hostinger Git deployment.
+Requires at least: 6.5
+Tested up to: 6.8
+Requires PHP: 7.4
+Version: 0.1.0
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: vibe-aesthetic-theme
+Tags: block-theme, full-site-editing, custom-colors, custom-logo, editor-style
+*/
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	min-height: 100vh;
+}
+
+a {
+	text-decoration-thickness: 0.08em;
+	text-underline-offset: 0.18em;
+}
+
+.wp-site-blocks {
+	min-height: 100vh;
+}
+
