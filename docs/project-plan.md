@@ -28,8 +28,8 @@ Checklist:
 - In Hostinger hPanel, open `Websites -> Dashboard -> Advanced -> Git`.
 - Connect GitHub through OAuth.
 - Select the repository and branch.
-- Set deployment path to `public_html/wp-content/plugins/ky-vibe-enhancements`.
-- Confirm Hostinger deploys the repository root directly into that plugin folder.
+- Use Hostinger's fixed root directory: `public_html`.
+- Keep plugin files nested in this repository under `wp-content/plugins/ky-vibe-enhancements`.
 - Deploy to staging.
 - In WordPress Admin, activate `KY Vibe Enhancements`.
 - Confirm WoodMart Child remains the active theme.
@@ -62,7 +62,19 @@ After staging works, expand the plugin:
 
 ## Deployment Target
 
-Use this Hostinger Git deployment path:
+Hostinger Git deployment root:
+
+```text
+public_html
+```
+
+Plugin path inside this repository:
+
+```text
+wp-content/plugins/ky-vibe-enhancements
+```
+
+Resulting plugin path on the server:
 
 ```text
 public_html/wp-content/plugins/ky-vibe-enhancements

@@ -14,16 +14,22 @@ Build polished Gutenberg-editable sections and front-end enhancements through a 
 
 ## Current Plugin
 
-This repository is the plugin root. When deployed to WordPress, the directory should be:
+Hostinger currently deploys this repository to:
 
 ```text
-public_html/wp-content/plugins/ky-vibe-enhancements
+public_html
 ```
 
-The plugin entry file is:
+Because that root directory is fixed in hPanel, this repository includes the WordPress plugin path inside the repo:
 
 ```text
-ky-vibe-enhancements.php
+wp-content/plugins/ky-vibe-enhancements
+```
+
+After deployment, WordPress should see the plugin at:
+
+```text
+public_html/wp-content/plugins/ky-vibe-enhancements/ky-vibe-enhancements.php
 ```
 
 ## Existing Theme Strategy
