@@ -26,11 +26,24 @@ Build the uploadable plugin ZIP:
 bash scripts/build-plugin-zip.sh
 ```
 
-Upload this file in WordPress Admin:
+Upload this file in WordPress Admin for the first install:
 
 ```text
 dist/ky-vibe-enhancements.zip
 ```
+
+## Update Workflow
+
+After the first install, updates should use GitHub Releases and the WordPress plugin update screen:
+
+1. Change plugin code locally.
+2. Bump `Version` and `KY_VIBE_ENHANCEMENTS_VERSION`.
+3. Commit and push to GitHub.
+4. Create and push a tag, such as `v0.1.2`.
+5. Build `dist/ky-vibe-enhancements.zip` and attach it to the GitHub release.
+6. In WordPress Admin, update `KY Vibe Enhancements` from the Plugins screen.
+
+Do not use Hostinger Git deployment for this project.
 
 ## Existing Theme Strategy
 
@@ -38,4 +51,4 @@ Keep WoodMart and WoodMart Child active. This repository should not replace the 
 
 ## First Milestone
 
-Create the staging deployment path, connect this repository to Hostinger Git deployment, then activate the plugin on the staging WordPress site.
+Install the plugin on staging through WordPress Admin, then use GitHub Releases for future WordPress plugin updates.

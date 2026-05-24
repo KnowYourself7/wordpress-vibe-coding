@@ -5,7 +5,8 @@
 ```text
 Codex local development
   -> GitHub repository
-  -> Hostinger Git deployment
+  -> GitHub release asset
+  -> WordPress plugin updater
   -> WordPress plugin
   -> WoodMart Child remains active
   -> Gutenberg patterns, shortcodes, styles, and optional custom blocks
@@ -22,8 +23,8 @@ On 2026-05-24, Hostinger Git deployment was tested with root directory fixed to 
 Do not use Hostinger Git deployment for this project unless Hostinger provides a safe, scoped target that writes only to the plugin directory. The preferred deployment methods are:
 
 - Upload a plugin ZIP through WordPress Admin.
-- Upload the plugin folder through Hostinger File Manager.
-- Use GitHub Actions or SFTP only if the upload target is strictly limited to `wp-content/plugins/ky-vibe-enhancements`.
+- Use GitHub Releases plus the plugin's built-in updater after the first install.
+- Use SFTP only if the upload target is strictly limited to `wp-content/plugins/ky-vibe-enhancements`.
 
 ## Step 1: Staging Plugin Deployment Setup
 
@@ -40,6 +41,18 @@ Checklist:
 - Activate `KY Vibe Enhancements`.
 - Confirm WoodMart Child remains the active theme.
 - Visit the staging homepage and confirm the site still looks unchanged except for plugin-provided additions.
+
+## Step 2: Remote Update Workflow
+
+Goal: avoid manual ZIP uploads for every vibe coding update.
+
+Checklist:
+
+- Keep the plugin installed through WordPress Admin.
+- Publish new plugin versions as GitHub releases.
+- Let the plugin check `https://api.github.com/repos/KnowYourself7/wordpress-vibe-coding/releases/latest`.
+- Update the plugin from `Plugins -> Installed Plugins` in WordPress Admin.
+- Test on staging before updating production.
 
 ## Step 2: Visual Direction
 
@@ -74,10 +87,16 @@ Safe plugin source directory:
 ky-vibe-enhancements
 ```
 
-Safe deployable artifact:
+First-install artifact:
 
 ```text
 dist/ky-vibe-enhancements.zip
+```
+
+Ongoing update channel:
+
+```text
+GitHub Release asset: ky-vibe-enhancements.zip
 ```
 
 Do not deploy this repository to `public_html` with Hostinger Git deployment.
