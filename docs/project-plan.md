@@ -15,6 +15,16 @@ Codex local development
 
 Do not replace the current WoodMart / WoodMart Child theme. The plugin layer should add enhancements while preserving existing theme settings, menus, widgets, WooCommerce templates, and WoodMart configuration.
 
+## Deployment Incident Note
+
+On 2026-05-24, Hostinger Git deployment was tested with root directory fixed to `public_html`. This replaced the WordPress root file layout with repository contents and removed visible WordPress core files from `public_html`.
+
+Do not use Hostinger Git deployment for this project unless Hostinger provides a safe, scoped target that writes only to the plugin directory. The preferred deployment methods are:
+
+- Upload a plugin ZIP through WordPress Admin.
+- Upload the plugin folder through Hostinger File Manager.
+- Use GitHub Actions or SFTP only if the upload target is strictly limited to `wp-content/plugins/ky-vibe-enhancements`.
+
 ## Step 1: Staging Plugin Deployment Setup
 
 Goal: get a safe staging WordPress site running this plugin before touching production.
@@ -62,23 +72,13 @@ After staging works, expand the plugin:
 
 ## Deployment Target
 
-Hostinger Git deployment root:
-
-```text
-public_html
-```
-
-Plugin path inside this repository:
-
-```text
-wp-content/plugins/ky-vibe-enhancements
-```
-
-Resulting plugin path on the server:
+Safe plugin target:
 
 ```text
 public_html/wp-content/plugins/ky-vibe-enhancements
 ```
+
+Do not deploy this repository to `public_html` with Hostinger Git deployment.
 
 Do not deploy this repository to:
 
