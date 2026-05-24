@@ -1,6 +1,6 @@
 # WordPress Vibe Coding
 
-Hostinger-ready WordPress block theme project generated for a GitHub -> Hostinger Git deployment workflow.
+Vibe coding for WordPress: a Hostinger-ready block theme project generated for a GitHub -> Hostinger Git deployment workflow.
 
 ## Project Goal
 
@@ -29,4 +29,3 @@ public_html/wp-content/themes/vibe-aesthetic-theme
 ## First Milestone
 
 Create the staging deployment path, connect this repository to Hostinger Git deployment, then activate the theme on the staging WordPress site.
-
