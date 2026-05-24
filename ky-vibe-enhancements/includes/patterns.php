@@ -43,6 +43,16 @@ function ky_vibe_enhancements_register_patterns() {
 			'content'     => ky_vibe_enhancements_get_service_grid_pattern(),
 		)
 	);
+
+	register_block_pattern(
+		'ky-vibe-enhancements/why-teslamigo',
+		array(
+			'title'       => __( 'Why Teslamigo', 'ky-vibe-enhancements' ),
+			'description' => __( 'A premium feature section for explaining the Teslamigo brand promise.', 'ky-vibe-enhancements' ),
+			'categories'  => array( 'ky-vibe-sections' ),
+			'content'     => ky_vibe_enhancements_get_why_teslamigo_pattern(),
+		)
+	);
 }
 add_action( 'init', 'ky_vibe_enhancements_register_patterns' );
 
@@ -123,3 +133,108 @@ function ky_vibe_enhancements_get_service_grid_pattern() {
 <!-- /wp:group -->';
 }
 
+/**
+ * Return the Why Teslamigo feature section block pattern markup.
+ *
+ * @return string
+ */
+function ky_vibe_enhancements_get_why_teslamigo_pattern() {
+	return '<!-- wp:group {"className":"teslamigo-why","layout":{"type":"default"}} -->
+<div class="wp-block-group teslamigo-why">
+	<!-- wp:group {"className":"teslamigo-why__inner","layout":{"type":"default"}} -->
+	<div class="wp-block-group teslamigo-why__inner">
+		<!-- wp:group {"className":"teslamigo-why__header","layout":{"type":"default"}} -->
+		<div class="wp-block-group teslamigo-why__header">
+			<!-- wp:group {"layout":{"type":"default"}} -->
+			<div class="wp-block-group">
+				<!-- wp:paragraph {"className":"teslamigo-why__eyebrow"} -->
+				<p class="teslamigo-why__eyebrow">Why Teslamigo</p>
+				<!-- /wp:paragraph -->
+				<!-- wp:heading {"level":2,"className":"teslamigo-why__title"} -->
+				<h2 class="wp-block-heading teslamigo-why__title">Made for the way Tesla owners actually live.</h2>
+				<!-- /wp:heading -->
+			</div>
+			<!-- /wp:group -->
+			<!-- wp:group {"className":"teslamigo-why__intro","layout":{"type":"default"}} -->
+			<div class="wp-block-group teslamigo-why__intro">
+				<!-- wp:heading {"level":3,"className":"teslamigo-why__subtitle"} -->
+				<h3 class="wp-block-heading teslamigo-why__subtitle">Real-life Tesla scenarios, not random accessories.</h3>
+				<!-- /wp:heading -->
+				<!-- wp:paragraph -->
+				<p>Most accessory stores sell by product category. Teslamigo builds around real-life Tesla scenarios. From camping comfort to pet travel, cabin organization, privacy, and everyday convenience, every product is selected or designed to solve a specific owner problem with clean fitment, useful function, and a premium in-car experience.</p>
+				<!-- /wp:paragraph -->
+				<!-- wp:buttons {"className":"teslamigo-why__actions"} -->
+				<div class="wp-block-buttons teslamigo-why__actions">
+					<!-- wp:button {"className":"teslamigo-why__button teslamigo-why__button--primary"} -->
+					<div class="wp-block-button teslamigo-why__button teslamigo-why__button--primary"><a class="wp-block-button__link wp-element-button" href="#">Shop now</a></div>
+					<!-- /wp:button -->
+					<!-- wp:button {"className":"teslamigo-why__button teslamigo-why__button--secondary"} -->
+					<div class="wp-block-button teslamigo-why__button teslamigo-why__button--secondary"><a class="wp-block-button__link wp-element-button" href="#">View more</a></div>
+					<!-- /wp:button -->
+				</div>
+				<!-- /wp:buttons -->
+			</div>
+			<!-- /wp:group -->
+		</div>
+		<!-- /wp:group -->
+		<!-- wp:group {"className":"teslamigo-why__grid","layout":{"type":"default"}} -->
+		<div class="wp-block-group teslamigo-why__grid">
+			<!-- wp:group {"className":"teslamigo-feature-card","layout":{"type":"default"}} -->
+			<div class="wp-block-group teslamigo-feature-card">
+				<!-- wp:paragraph {"className":"teslamigo-feature-card__number"} -->
+				<p class="teslamigo-feature-card__number">01</p>
+				<!-- /wp:paragraph -->
+				<!-- wp:heading {"level":4} -->
+				<h4 class="wp-block-heading">Made for Real Scenarios</h4>
+				<!-- /wp:heading -->
+				<!-- wp:paragraph -->
+				<p>Accessories built for camping, road trips, pet travel, storage, privacy, and everyday comfort.</p>
+				<!-- /wp:paragraph -->
+			</div>
+			<!-- /wp:group -->
+			<!-- wp:group {"className":"teslamigo-feature-card","layout":{"type":"default"}} -->
+			<div class="wp-block-group teslamigo-feature-card">
+				<!-- wp:paragraph {"className":"teslamigo-feature-card__number"} -->
+				<p class="teslamigo-feature-card__number">02</p>
+				<!-- /wp:paragraph -->
+				<!-- wp:heading {"level":4} -->
+				<h4 class="wp-block-heading">Less DIY. More Ready.</h4>
+				<!-- /wp:heading -->
+				<!-- wp:paragraph -->
+				<p>Simple setups that help your Tesla feel more comfortable, organized, and adventure-ready.</p>
+				<!-- /wp:paragraph -->
+			</div>
+			<!-- /wp:group -->
+			<!-- wp:group {"className":"teslamigo-feature-card","layout":{"type":"default"}} -->
+			<div class="wp-block-group teslamigo-feature-card">
+				<!-- wp:paragraph {"className":"teslamigo-feature-card__number"} -->
+				<p class="teslamigo-feature-card__number">03</p>
+				<!-- /wp:paragraph -->
+				<!-- wp:heading {"level":4} -->
+				<h4 class="wp-block-heading">Tesla-Fit First</h4>
+				<!-- /wp:heading -->
+				<!-- wp:paragraph -->
+				<p>Clean, practical products designed to match your Tesla’s space, shape, and lifestyle.</p>
+				<!-- /wp:paragraph -->
+			</div>
+			<!-- /wp:group -->
+			<!-- wp:group {"className":"teslamigo-feature-card","layout":{"type":"default"}} -->
+			<div class="wp-block-group teslamigo-feature-card">
+				<!-- wp:paragraph {"className":"teslamigo-feature-card__number"} -->
+				<p class="teslamigo-feature-card__number">04</p>
+				<!-- /wp:paragraph -->
+				<!-- wp:heading {"level":4} -->
+				<h4 class="wp-block-heading">Useful, Not Random</h4>
+				<!-- /wp:heading -->
+				<!-- wp:paragraph -->
+				<p>Every product has a job: solve a real problem, improve the experience, and earn its place in your car.</p>
+				<!-- /wp:paragraph -->
+			</div>
+			<!-- /wp:group -->
+		</div>
+		<!-- /wp:group -->
+	</div>
+	<!-- /wp:group -->
+</div>
+<!-- /wp:group -->';
+}

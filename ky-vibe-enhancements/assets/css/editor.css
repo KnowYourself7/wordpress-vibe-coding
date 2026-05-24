@@ -8,3 +8,8 @@
 	border-radius: 8px;
 }
 
+.editor-styles-wrapper .teslamigo-why,
+.editor-styles-wrapper .teslamigo-feature-card,
+.editor-styles-wrapper .teslamigo-why__intro {
+	box-sizing: border-box;
+}
