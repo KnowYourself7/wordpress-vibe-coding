@@ -10,9 +10,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Enqueue front-end plugin styles.
+ * Enqueue shared block styles in both the front end and block editor.
  */
-function ky_vibe_enhancements_enqueue_frontend_assets() {
+function ky_vibe_enhancements_enqueue_block_assets() {
 	wp_enqueue_style(
 		'ky-vibe-enhancements',
 		KY_VIBE_ENHANCEMENTS_PLUGIN_URL . 'assets/css/frontend.css',
@@ -20,7 +20,7 @@ function ky_vibe_enhancements_enqueue_frontend_assets() {
 		KY_VIBE_ENHANCEMENTS_VERSION
 	);
 }
-add_action( 'wp_enqueue_scripts', 'ky_vibe_enhancements_enqueue_frontend_assets' );
+add_action( 'enqueue_block_assets', 'ky_vibe_enhancements_enqueue_block_assets' );
 
 /**
  * Enqueue editor styles for Gutenberg previews.
@@ -34,4 +34,3 @@ function ky_vibe_enhancements_enqueue_editor_assets() {
 	);
 }
 add_action( 'enqueue_block_editor_assets', 'ky_vibe_enhancements_enqueue_editor_assets' );
-
