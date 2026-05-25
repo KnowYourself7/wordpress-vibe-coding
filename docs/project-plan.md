@@ -12,9 +12,63 @@ Codex local development
   -> Gutenberg patterns, shortcodes, styles, and optional custom blocks
 ```
 
+## Modern Block Pattern Strategy
+
+The project should move toward an AI-friendly, native Gutenberg section system:
+
+- New reusable visual sections should be built as native Gutenberg block patterns, not WoodMart private layout blocks.
+- Pattern markup should use valid WordPress block comments and editable core blocks so sections remain usable in Gutenberg.
+- Sections should be atomic: hero, feature grid, proof, process, CTA, contact, and similar units should each have their own reusable pattern.
+- Full-page templates should be assembled from section patterns where practical. This keeps pages readable and prevents large duplicated HTML files.
+- Pattern categories should separate reusable sections from full pages, for example `KY Vibe Sections` and `KY Vibe Full Pages`.
+- The current plugin slug remains `ky-vibe-enhancements`; external examples using names like `my-vibe-patterns` are architecture examples only.
+
+The existing `includes/patterns.php` function-based registration is valid for starter patterns. As the pattern library grows, prefer migrating toward a file-backed pattern library under a dedicated `patterns/` directory with automatic registration, while keeping the existing plugin constants, text domain, asset loading, updater, and ZIP workflow intact.
+
+## Evaluation Of File-Backed Pattern Proposal
+
+The proposed `patterns/*.php` library is feasible and aligns with the project direction, with these adjustments:
+
+- Keep the real plugin identity as `ky-vibe-enhancements`; names like `my-vibe-patterns` are examples only.
+- Auto-registering pattern files is useful once there are more sections, because Codex can add `patterns/section-name.php` without editing central registration code.
+- `page-*.php` full-page patterns are useful, but should assemble known reusable sections rather than copy thousands of lines of markup.
+- The proposed "correct example" using only a raw `<section>` wrapper is incomplete. Gutenberg patterns must include valid block comments such as `<!-- wp:group --> ... <!-- /wp:group -->`.
+- PHP pattern files are trusted repository code. Do not load user-uploaded or remote PHP files.
+- Deployment stays plugin-ZIP / GitHub Release based. Do not reintroduce Hostinger Git deployment to `public_html`.
+
+Future target structure:
+
+```text
+ky-vibe-enhancements/
+  includes/
+    assets.php
+    patterns.php
+    shortcodes.php
+    updater.php
+  patterns/
+    section-why-teslamigo.php
+    section-hero.php
+    section-cta.php
+    page-home.php
+  assets/
+    css/
+      frontend.css
+      editor.css
+```
+
+Future registration behavior:
+
+- Register `KY Vibe Sections` for `section-*` files.
+- Register `KY Vibe Full Pages` for `page-*` files.
+- Derive titles from file headers when present, then from filenames as fallback.
+- Capture pattern output with output buffering.
+- Keep all shared CSS in plugin assets, not inline style strings.
+
 ## Principle
 
 Do not replace the current WoodMart / WoodMart Child theme. The plugin layer should add enhancements while preserving existing theme settings, menus, widgets, WooCommerce templates, and WoodMart configuration.
+
+Use WoodMart for the site shell and existing theme-controlled areas. Use this plugin for reusable Gutenberg-editable sections, scoped styles, shortcodes, and optional custom blocks when patterns are not enough.
 
 ## Deployment Incident Note
 

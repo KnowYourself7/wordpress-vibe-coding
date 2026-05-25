@@ -20,6 +20,37 @@ Plugin source path:
 ky-vibe-enhancements
 ```
 
+This repository uses a plugin-first Vibe Coding architecture. New reusable page sections should be native Gutenberg block patterns layered on top of the existing WoodMart / WoodMart Child site, not replacements for the active theme.
+
+Pattern development guidelines:
+
+- Prefer WordPress core blocks and valid Gutenberg block comments.
+- Keep sections atomic and scoped with `ky-vibe-*` or brand-specific classes.
+- Put shared styling in plugin CSS instead of long inline styles.
+- Avoid hard-coded local, staging, or production URLs inside pattern content.
+- Assemble full-page patterns from reusable sections where practical.
+
+## Architecture Direction
+
+The project is moving toward a file-backed Gutenberg pattern library:
+
+```text
+ky-vibe-enhancements/
+  patterns/
+    section-why-teslamigo.php
+    section-feature-grid.php
+    page-home.php
+```
+
+This is feasible and preferred as the library grows because Codex can add or edit one section file without touching the plugin registration core. The current function-based `includes/patterns.php` implementation remains valid for the starter patterns; a future migration should preserve the existing plugin slug, updater, asset loading, and ZIP release workflow.
+
+Important constraints:
+
+- Pattern files must output valid Gutenberg block markup, including `<!-- wp:... -->` comments and matching closing comments.
+- Use WordPress core blocks for structure; do not depend on WoodMart private layout blocks.
+- Full-page patterns may be assembled from reusable section files, but the assembly should happen inside trusted plugin PHP code, not by deploying arbitrary content to WordPress root.
+- Hostinger Git deployment to `public_html` remains forbidden.
+
 Build the uploadable plugin ZIP:
 
 ```bash
